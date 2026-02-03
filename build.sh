@@ -7,13 +7,14 @@ repo init -u https://github.com/Evolution-X/manifest -b bq2 --git-lfs
 # Remove old device specific repos
 remove=(
 .repo/local_manifests
-device/xiaomi
+device/xiaomi/peridot
+out/target/product/peridot
 )
 
 rm -rf "${remove[@]}"
 
 # Deivce Trees
-git clone https://github.com/ryznstk/device_xiaomi.git -b evo device/xiaomi/peridot
+git clone https://github.com/ryznstk/manifest_peridot.git -b lineage-23.0 .repo/local_manifests/
 
 # Building 
 . build/envsetup.sh
