@@ -1,26 +1,22 @@
 # repo init
-repo init -u https://github.com/VoltageOS/manifest.git -b 16.2 --git-lfs
+repo init -u https://github.com/Evolution-X/manifest -b bq2 --git-lfs
 
 # repo sync script
 /opt/crave/resync.sh
 
 # Remove old device specific repos
 remove=(
+.repo/local_manifests
 device/xiaomi
-vendor/lineage-priv/keys
 )
 
 rm -rf "${remove[@]}"
 
 # Deivce Trees
-git clone https://github.com/ryznstk/device_xiaomi.git -b vos device/xiaomi/peridot
-
-# My Keys
-git clone https://github.com/droidcore/private_key.git vendor/lineage-priv/keys
+git clone https://github.com/ryznstk/device_xiaomi.git -b evo device/xiaomi/peridot
 
 # Building 
 . build/envsetup.sh
-export BUILD_USERNAME=BLU
-export BUILD_HOSTNAME=ubuntu
+lunch lineage_peridot-bp4a-user
 make installclean
-brunch peridot
+m evolution
